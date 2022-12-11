@@ -80,7 +80,19 @@ def StartVillage(): # The first part of the game
         StartVillage()
 
 def westOfStart():
-    choice = input("Where do you want to go? The 'bar', the 'Weapon Store', the 'restaurant', or the 'Mayor's House'? ").lower()
+    choice = input("Where do you want to go? The 'bar', the 'Weapon Store', the 'restaurant', or the house belonging to the 'Mayor'? ").lower()
+    if choice == "bar":
+
+    elif choice == "restaurant":
+
+    elif choice == "mayor":
+
+    elif choice == "weapon store":
+
+    else:
+        print("""I didn't understand that.
+""")
+        westOfStart()
 
 # Starting text
 def begin():
