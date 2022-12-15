@@ -55,10 +55,10 @@ def Bar(): # Enter the bar
     print("""
 You enter the bar. A bartender greets you and offers you a pint of beer.
 The beer costs 10 Money.""")
-    if money >= 10:
+    if money >= 5:
         buybeer = input("Will you buy this beer? 'Yes' or 'no'?").lower()
         if buybeer == "yes" or buybeer == "n":
-            money -= 10
+            money -= 5
             health += 5
             print("")
             print("That beer tasted nice. You gain 5 health.")
@@ -100,24 +100,50 @@ The beer costs 10 Money.""")
         time.sleep(1)
         WestOfStart()
 
+def Weaponstore():
+  global inventory
+  global money
+  global ammo
+  print("\n You visit a local weapon store. There is a large selection of weapons.\n")
+  time.sleep(1)
+  while True:
+    choice = input("""What do you want to buy?
+- Sword
+- Ammo
+- HealthKit""").lower()
+    if choice == "sword":
+      if "Sword" not in inventory:
+        print("You buy a sword.")
+        money -= 20
+        ammo += 1
+        inventory.append("Sword")
+        time.sleep(1)
+      else:
+        print("You already have a sword.")
+    elif choice == "ammo":
+      print("You buy a few more ammo. You gain 10 ammo.")
+      money -= 15
+      ammo += 10
+  
+  
 def WestOfStart(): # You head west and the bear is dead
     choice = input("Where do you want to go? The 'bar', the 'Weapon Store', the 'restaurant', or the house belonging to the 'Mayor'? ").lower()
     if choice == "bar":
-        bar()
+        Bar()
 
     elif choice == "restaurant":
-        restaurant()
+        Restaurant()
 
     elif choice == "mayor":
-        mayor()
+        Mayor()
 
     elif choice == "weapon store":
-        weaponstore()
+        Weaponstore()
 
     else:
         print("""I didn't understand that.
 """)
-        westOfStart()
+        WestOfStart()
 
 def StartVillage(): # The first part of the game
     global bear
